@@ -1,11 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from 'typeorm';
+import { Entity, Column, ManyToMany } from 'typeorm';
 import { Book } from '../../books/entities/book.entity';
+import { BaseEntity } from '../../../shared/entities/base.entity';
 
 @Entity('authors')
-export class Author {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
-
+export class Author extends BaseEntity {
   @Column()
   nome: string;
 

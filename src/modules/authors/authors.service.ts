@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { Author } from './entities/author.entity';
 import { CreateAuthorDto } from './dto/create-author.dto';
 import { UpdateAuthorDto } from './dto/update-author.dto';
+import { ErrorTextEnum } from '../../shared/enums/errors-text.enum';
 
 @Injectable()
 export class AuthorsService {
@@ -23,6 +24,11 @@ export class AuthorsService {
       take: limit,
       order: { nome: 'ASC' },
     });
+
+    if (total === 0) {
+      throw new NotFoundException(ErrorTextEnum.Authors_Not_Found);
+    }
+
     return {
       data,
       meta: {
@@ -42,7 +48,7 @@ export class AuthorsService {
     });
 
     if (!author) {
-      throw new NotFoundException(`autor com ID "${id}"`);
+      throw new NotFoundException(ErrorTextEnum.Author_Not_Found);
     }
     return author;
   }
@@ -50,11 +56,17 @@ export class AuthorsService {
   async update(id: string, updateAuthorDto: UpdateAuthorDto): Promise<Author> {
     const author = await this.findOne(id);
     Object.assign(author, updateAuthorDto);
+    if (!author) {
+      throw new NotFoundException(ErrorTextEnum.Author_Not_Found);
+    }
     return await this.authorRepository.save(author);
   }
 
   async remove(id: string): Promise<void> {
     const author = await this.findOne(id);
-    await this.authorRepository.remove(author);
+    if (!author) {
+      throw new NotFoundException(ErrorTextEnum.Author_Not_Found);
+    }
+    await this.authorRepository.softRemove(author);
   }
 }
