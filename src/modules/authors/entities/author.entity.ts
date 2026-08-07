@@ -1,0 +1,20 @@
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from 'typeorm';
+import { Book } from '../../books/entities/book.entity';
+
+@Entity('authors')
+export class Author {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
+
+  @Column()
+  nome: string;
+
+  @Column({ type: 'date' })
+  dataNascimento: string;
+
+  @Column({ type: 'text', nullable: true })
+  biografia: string;
+
+  @ManyToMany(() => Book, (book) => book.authors)
+  books: Book[];
+}
