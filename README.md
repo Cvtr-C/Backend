@@ -292,3 +292,24 @@ npm run test:cov
 - Entities: Define database schemas and relationships via TypeORM decorators.
 
 - Swagger: Automatically generates API schemas directly from NestJS decorators.
+---
+# 📖 Useful Resources
+
+- **NestJS Documentation:** [https://docs.nestjs.com](https://docs.nestjs.com)
+- **TypeORM Documentation:** [https://typeorm.io](https://typeorm.io)
+- **PostgreSQL Documentation:** [https://www.postgresql.org](https://www.postgresql.org)
+- **Docker Documentation:** [https://docs.docker.com](https://docs.docker.com)
+- **Swagger / OpenAPI:** [https://swagger.io](https://swagger.io)
+- **class-validator:** [https://github.com/typestack/class-validator](https://github.com/typestack/class-validator)
+---
+# 👨‍💻 Author
+
+Developed by **Carlos Vitor Taleires Rodrigues**
+
+Backend Development Assignment for LAPISCO built with NestJS, TypeORM, and PostgreSQL.
+
+---
+# 📄 License
+This project is intended for educational and evaluation purposes.
+
+Built with ❤️ using NestJS.
