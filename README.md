@@ -169,3 +169,24 @@ Swagger provides:
 - Request body and response payload examples
 
 - Schema inspection
+---
+# 🔄 API Endpoint Overview
+### 📚 Books Module (`/books`)
+
+| Method | Endpoint | Description | Query Parameters |
+| :--- | :--- | :--- | :--- |
+| `POST` | `/books` | Create a new book entry & bind authors | None |
+| `GET` | `/books` | Retrieve paginated list of books | `page`, `limit`, `titulo`, `autor` |
+| `GET` | `/books/:id` | Retrieve book details by ID | None |
+| `PATCH` | `/books/:id` | Update an existing book's details | None |
+| `DELETE` | `/books/:id` | Delete a book record | None |
+
+### ✍️ Authors Module (`/authors`)
+
+| Method | Endpoint | Description | Query Parameters |
+| :--- | :--- | :--- | :--- |
+| `POST` | `/authors` | Create an individual author record | None |
+| `GET` | `/authors` | Retrieve paginated list of authors | `page`, `limit`, `nome` |
+| `GET` | `/authors/:id` | Retrieve author details by ID | None |
+| `PATCH` | `/authors/:id` | Update an existing author's details | None |
+| `DELETE` | `/authors/:id` | Delete an author record | None |
