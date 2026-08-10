@@ -53,7 +53,7 @@ src/
 │
 ├── shared/                    # Shared resources and cross-cutting concerns
 │   ├── entities/              # Base and shared TypeORM entities
-│   ├── enums/                 # Application enumerations (Custom error messages & system codes)
+│   ├── enums/                 # Custom error messages
 │   └── pagination/            # Global pagination DTOs, interfaces, and meta builders
 │
 ├── app.module.ts              # Root application module
