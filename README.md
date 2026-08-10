@@ -70,4 +70,42 @@ Before running this project, ensure you have the following installed locally:
 
 - Docker Desktop (v20.10+) & Docker Compose (v2.0+)
 
-Git
+- Git
+---
+# 🔐 Environment Variables
+Create a ``` .env ``` file in the project root directory based on the following template:
+```
+# Application Port
+PORT=3000
+
+# PostgreSQL Configuration
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+POSTGRES_DB=postgres_db
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+PORT=3000
+```
+---
+# 🚀 Installation & Execution
+1. Clone the Repository
+```
+git clone <repository-url>
+cd project-name
+```
+2. Install Dependencies
+```
+npm install
+```
+3. Run with Docker Compose (Recommended)
+- Launch both the NestJS API and PostgreSQL containers in detached mode:
+```
+docker-compose up -d --build
+```
+The API will be operational at: http://localhost:3000
+4. Stop Containers Safely
+- To stop active containers while keeping database records saved in the persistent volume:
+```
+docker-compose down
+```
+⚠️ Note: Do not use the -v flag ( ``` docker-compose down -v ``` ) unless you explicitly intend to destroy the PostgreSQL data volume and reset the database.
