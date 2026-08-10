@@ -267,3 +267,28 @@ Swagger provides:
 - **Docker & Docker Compose Support:** One-command environment setup (`docker-compose up -d --build`) for running both the API and PostgreSQL in isolated containers.
 - **Interactive Swagger Documentation:** Built-in OpenAPI 3.0 UI (`/api`) providing dynamic schema testing, request examples, and response definitions.
 - **Environment Variable Management:** Centralized configuration via `.env` files and `@nestjs/config`.
+---
+# 🧪 Running Tests
+Unit tests:
+```
+npm run test
+```
+End-to-end (E2E) tests:
+```
+npm run test:e2e
+```
+Test coverage:
+```
+npm run test:cov
+```
+---
+# 📌 Development Notes
+Controllers: Manage incoming HTTP requests and map queries/parameters.
+
+Services: Encapsulate business logic, data conversions (DD-MM-YYYY to YYYY-MM-DD), and database transactions.
+
+DTOs: Enforce data validation (class-validator) and type transformations (class-transformer).
+
+Entities: Define database schemas and relationships via TypeORM decorators.
+
+Swagger: Automatically generates API schemas directly from NestJS decorators.
