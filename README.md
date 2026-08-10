@@ -103,9 +103,25 @@ npm install
 docker-compose up -d --build
 ```
   The API will be operational at: http://localhost:3000
+  
 4. Stop Containers Safely
 - To stop active containers while keeping database records saved in the persistent volume:
 ```
 docker-compose down
 ```
   ⚠️ Note: Do not use the -v flag ( ``` docker-compose down -v ``` ) unless you explicitly intend to destroy the PostgreSQL data volume and reset the database.
+
+# 📚 OpenAPI / Swagger Documentation
+Once the application is running, access the interactive Swagger UI at:
+```
+http://localhost:3000/api
+```
+Swagger provides:
+
+Complete endpoint documentation
+
+Interactive request execution (Try it out)
+
+Request body and response payload examples
+
+Schema inspection
