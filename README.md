@@ -87,41 +87,65 @@ POSTGRES_PORT=5432
 PORT=3000
 ```
 ---
-# 🚀 Installation & Execution
-1. Clone the Repository
-```
+# 📦 Installation
+
+Clone the repository to your local machine:
+
+```bash
 git clone <repository-url>
+```
+Navigate into the project directory:
+```bash
 cd project-name
 ```
-2. Install Dependencies
-```
+Install all required dependencies:
+```bash
 npm install
 ```
-3. Run with Docker Compose (Recommended)
-- Launch both the NestJS API and PostgreSQL containers in detached mode:
-```
+---
+# 🐳 Running PostgreSQL with Docker
+Start the application services and PostgreSQL container in background mode:
+```bash
 docker-compose up -d --build
 ```
-  The API will be operational at: http://localhost:3000
-  
-4. Stop Containers Safely
-- To stop active containers while keeping database records saved in the persistent volume:
+Verify that the containers are up and running:
+```bash
+docker ps
 ```
+Stop the containers safely while keeping your database data intact:
+```bash
 docker-compose down
 ```
-  ⚠️ Note: Do not use the -v flag ( ``` docker-compose down -v ``` ) unless you explicitly intend to destroy the PostgreSQL data volume and reset the database.
+⚠️ Note: Avoid using docker-compose down -v unless you explicitly want to delete the persistent PostgreSQL volume and reset all stored database records.
+---
+# 🗄️ Database Migrations
+This project uses TypeORM migrations to track and manage database schema changes safely.
 
-# 📚 OpenAPI / Swagger Documentation
-Once the application is running, access the interactive Swagger UI at:
+Run pending migrations against the database:
+```bash
+npm run typeorm -- migration:run -d ./src/data-source.ts
 ```
-http://localhost:3000/api
+Revert the last executed migration:
+```bash
+npm run typeorm -- migration:revert -d ./src/data-source.ts
 ```
-Swagger provides:
+Show the status of all migrations:
+```bash
+npm run typeorm -- migration:show -d ./src/data-source.ts
+```
+---
+# ▶️ Running the Application
+**Local Development Mode (outside Docker)**
 
-Complete endpoint documentation
-
-Interactive request execution (Try it out)
-
-Request body and response payload examples
-
-Schema inspection
+Start the NestJS server in watch mode for development:
+```bash
+npm run start:dev
+```
+Start in normal mode:
+```bash
+npm run start
+```
+Start in production mode:
+```bash
+npm run start:prod
+```
