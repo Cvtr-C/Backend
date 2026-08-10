@@ -2,7 +2,7 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
 
- # 📚 Books & Authors Management API
+# 📚 Books & Authors Management API
 
 An enterprise-ready, modular RESTful API built with **NestJS**, **TypeScript**, and **TypeORM**, featuring persistent storage with **PostgreSQL** in containerized environments. 
 
@@ -37,7 +37,7 @@ Ensure you have the following software installed on your local environment:
 
 - **[Docker Desktop](https://www.docker.com/products/docker-desktop/)** (v20.10+)
 - **[Docker Compose](https://docs.docker.com/compose/install/)** (v2.0+)
-- *(Optional)* **[Node.js](https://nodejs.org/)** (v18+) & **npm** (for local non-containerized execution)
+- **[Node.js](https://nodejs.org/)** (v18+) & **npm**
 
 ---
 
@@ -55,6 +55,19 @@ POSTGRES_PORT=5432
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=postgres
 POSTGRES_DB=lapisco_db
+```
 
-# TypeORM Synchronization (Set to false in production)
-TYPEORM_SYNCHRONIZE=true
+##🚀 Getting Started & Execution
+Follow these step-by-step instructions to get the application up and running locally.
+
+1. Clone the Repository
+Clone the project repository to your local machine:
+```
+git clone <REPOSITORY_URL>
+cd <REPOSITORY_FOLDER>
+```
+2. Install Project Dependencies
+Install all local Node.js packages and development dependencies defined in package.json:
+```
+npm install
+```
