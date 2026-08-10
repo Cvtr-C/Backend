@@ -71,7 +71,9 @@ Before running this project, ensure you have the following installed locally:
 - Docker Desktop (v20.10+) & Docker Compose (v2.0+)
 
 - Git
+  
 ---
+
 # 🔐 Environment Variables
 Create a ``` .env ``` file in the project root directory based on the following template:
 ```
@@ -116,7 +118,7 @@ Stop the containers safely while keeping your database data intact:
 ```bash
 docker-compose down
 ```
-⚠️ Note: Avoid using docker-compose down -v unless you explicitly want to delete the persistent PostgreSQL volume and reset all stored database records.
+  ⚠️ Note: Avoid using docker-compose down -v unless you explicitly want to delete the persistent PostgreSQL volume and reset all stored database records.
 ---
 # 🗄️ Database Migrations
 This project uses TypeORM migrations to track and manage database schema changes safely.
