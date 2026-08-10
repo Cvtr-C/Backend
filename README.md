@@ -50,11 +50,12 @@ Create a `.env` file in the root directory of the project based on the example c
 PORT=3000
 
 # PostgreSQL Configuration
-POSTGRES_HOST=postgres
-POSTGRES_PORT=5432
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=postgres
-POSTGRES_DB=lapisco_db
+POSTGRES_DB=postgres_db
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5432
+PORT=3000
 ```
 
 ##🚀 Getting Started & Execution
@@ -70,4 +71,14 @@ cd <REPOSITORY_FOLDER>
 Install all local Node.js packages and development dependencies defined in package.json:
 ```
 npm install
+```
+3. Build and Start Application via Docker
+Build the container images and launch both the NestJS API and PostgreSQL database services in detached background mode:
+```
+docker-compose up -d --build
+```
+4. Stopping the Application
+To safely stop and remove the active containers while preserving all stored PostgreSQL data inside the persistent volume:
+```
+docker-compose down
 ```
