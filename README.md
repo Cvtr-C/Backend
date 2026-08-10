@@ -60,3 +60,14 @@ src/
 ├── data-source.ts             # TypeORM Data Source configuration
 └── main.ts                    # Application bootstrap & Swagger setup
 ```
+---
+# ⚙️ Prerequisites
+Before running this project, ensure you have the following installed locally:
+
+- Node.js (v18 or higher)
+
+- npm (v9 or higher)
+
+- Docker Desktop (v20.10+) & Docker Compose (v2.0+)
+
+Git
