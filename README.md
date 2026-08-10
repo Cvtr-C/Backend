@@ -2,47 +2,59 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
 
-# 📚 API de Gestão de Livros e Autores — LAPISCO
+ # 📚 Books & Authors Management API
 
-API RESTful desenvolvida em NestJS para o gerenciamento modular de livros e autores, contando com suporte a relacionamento *Many-to-Many*, paginação, filtros avançados, validações de entrada e persistência em banco de dados PostgreSQL containerizado.
+An enterprise-ready, modular RESTful API built with **NestJS**, **TypeScript**, and **TypeORM**, featuring persistent storage with **PostgreSQL** in containerized environments. 
 
----
-
-## 🚀 Tecnologias Utilizadas
-
-* **Framework:** [NestJS](https://nestjs.com/) (TypeScript)
-* **Banco de Dados:** [PostgreSQL](https://www.postgresql.org/)
-* **ORM:** [TypeORM](https://typeorm.io/)
-* **Containerização:** [Docker](https://www.docker.com/) & [Docker Compose](https://docs.docker.com/compose/)
-* **Documentação:** [Swagger / OpenAPI](https://swagger.io/)
-* **Validação & Transformação:** `class-validator` e `class-transformer`
+This service provides end-to-end CRUD operations for managing books and authors, supporting Many-to-Many entity relationships, advanced query filtering, dynamic pagination, and robust input sanitization.
 
 ---
 
-## 🛠️ Arquitetura e Boas Práticas
+## 🛠 Tech Stack & Architecture
 
-* **Estrutura Modular:** Código separado por módulos independentes (`books`, `authors`, `common`).
-* **Tratamento de Dados e DTOs:** Validação rigorosa de payloads de entrada via `class-validator`.
-* **Formatação de Datas:** Suporte amigável ao padrão brasileiro (`DD-MM-YYYY`) nos DTOs, convertido nativamente no Service para armazenamento no PostgreSQL.
-* **Relacionamento N:N Autônomo:** Ao cadastrar um livro com nomes de autores, a API vincula automaticamente os autores existentes ou cria novos registros caso ainda não existam.
-
----
-
-## 📋 Pré-requisitos
-
-Antes de iniciar, certifique-se de ter instalado em sua máquina:
-* [Docker](https://www.docker.com/get-started)
-* [Docker Compose](https://docs.docker.com/compose/install/)
-* *(Opcional)* [Node.js](https://nodejs.org/) versão 18+ (caso queira executar fora do Docker)
+- **Core Framework:** [NestJS](https://nestjs.com/) (TypeScript)
+- **Database:** [PostgreSQL 15+](https://www.postgresql.org/)
+- **ORM:** [TypeORM](https://typeorm.io/)
+- **Containerization:** [Docker](https://www.docker.com/) & [Docker Compose](https://docs.docker.com/compose/)
+- **API Documentation:** [Swagger / OpenAPI 3.0](https://swagger.io/)
+- **Validation & Transformation:** `class-validator`, `class-transformer`
 
 ---
 
-## 📦 Como Configurar e Executar o Projeto
+## Key Features & Design Patterns
 
-### 1. Clonar o Repositório
-```bash
-git clone <URL_DO_SEU_REPOSITORIO>
-cd <NOME_DA_PASTA_DO_PROJETO>
+- **Modular Domain Design:** Enforces strict separation of concerns into isolated feature modules (`books`, `authors`, `common`).
+- **Autonomous Many-to-Many Linking:** When creating/updating a book with author names, the system automatically binds existing authors or creates missing ones atomically.
+- **Localized Date Parsing:** Accepts user-friendly date strings in `DD-MM-YYYY` format via DTO layer and seamlessly transforms them into standard database `DATE` objects (`YYYY-MM-DD`).
+- **Data Transfer Objects (DTOs) & Pipes:** Strict validation of incoming payloads using custom pipes and `class-validator` decorators to prevent invalid data ingestion.
+- **Global Pagination & Filtering:** Standardized query DTOs delivering pagination metrics (`totalItems`, `totalPages`, `currentPage`) alongside field-specific text search.
 
+---
 
+## 📋 Prerequisites
 
+Ensure you have the following software installed on your local environment:
+
+- **[Docker Desktop](https://www.docker.com/products/docker-desktop/)** (v20.10+)
+- **[Docker Compose](https://docs.docker.com/compose/install/)** (v2.0+)
+- *(Optional)* **[Node.js](https://nodejs.org/)** (v18+) & **npm** (for local non-containerized execution)
+
+---
+
+## ⚙️ Environment Configuration
+
+Create a `.env` file in the root directory of the project based on the example configuration below:
+
+```env
+# Application Port
+PORT=3000
+
+# PostgreSQL Configuration
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+POSTGRES_DB=lapisco_db
+
+# TypeORM Synchronization (Set to false in production)
+TYPEORM_SYNCHRONIZE=true
