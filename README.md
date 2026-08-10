@@ -283,12 +283,12 @@ npm run test:cov
 ```
 ---
 # 📌 Development Notes
-Controllers: Manage incoming HTTP requests and map queries/parameters.
+- Controllers: Manage incoming HTTP requests and map queries/parameters.
 
-Services: Encapsulate business logic, data conversions (DD-MM-YYYY to YYYY-MM-DD), and database transactions.
+- Services: Encapsulate business logic, data conversions (`DD-MM-YYYY` to `YYYY-MM-DD`), and database transactions.
 
-DTOs: Enforce data validation (class-validator) and type transformations (class-transformer).
+- DTOs: Enforce data validation (`class-validator`) and type transformations (`class-transformer`).
 
-Entities: Define database schemas and relationships via TypeORM decorators.
+- Entities: Define database schemas and relationships via TypeORM decorators.
 
-Swagger: Automatically generates API schemas directly from NestJS decorators.
+- Swagger: Automatically generates API schemas directly from NestJS decorators.
