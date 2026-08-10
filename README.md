@@ -110,6 +110,8 @@ Start the application services and PostgreSQL container in background mode:
 ```bash
 docker-compose up -d --build
 ```
+  The API will be operational at: http://localhost:3000
+  
 Verify that the containers are up and running:
 ```bash
 docker ps
@@ -118,7 +120,8 @@ Stop the containers safely while keeping your database data intact:
 ```bash
 docker-compose down
 ```
-  ⚠️ Note: Avoid using docker-compose down -v unless you explicitly want to delete the persistent PostgreSQL volume and reset all stored database records.
+  ⚠️ Note: Avoid using ``` docker-compose down -v ``` unless you explicitly want to delete the persistent PostgreSQL volume and reset all stored database records.
+  
 ---
 # 🗄️ Database Migrations
 This project uses TypeORM migrations to track and manage database schema changes safely.
@@ -151,3 +154,18 @@ Start in production mode:
 ```bash
 npm run start:prod
 ```
+---
+# 📚 OpenAPI / Swagger Documentation
+Once the application is running, access the interactive Swagger UI at:
+```
+http://localhost:3000/api
+```
+Swagger provides:
+
+- Complete endpoint documentation
+
+- Interactive request execution (Try it out)
+
+- Request body and response payload examples
+
+- Schema inspection
