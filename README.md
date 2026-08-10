@@ -45,11 +45,18 @@ The application provides a robust, production-grade REST API for managing books 
 ```text
 src/
 │
-├── modules/
-│   ├── books/                 # Books domain (Controllers, Services, Entities, DTOs)
-│   └── authors/               # Authors domain (Controllers, Services, Entities, DTOs)
+├── migrations/                # TypeORM database migration files
 │
-├── common/                    # Shared DTOs (Pagination), Pipes, and Utilities
-├── migrations/                # Schema tracking files
+├── modules/                   # Domain modules
+│   ├── authors/               # Authors domain (Controllers, Services, DTOs)
+│   └── books/                 # Books domain (Controllers, Services, DTOs)
+│
+├── shared/                    # Shared resources and cross-cutting concerns
+│   ├── entities/              # Base and shared TypeORM entities
+│   ├── enums/                 # Application-wide enumerations
+│   └── pagination/            # Global pagination DTOs and interfaces
+│
 ├── app.module.ts              # Root application module
-└── main.ts                    # Application bootstrap & Swagger initialization
+├── data-source.ts             # TypeORM Data Source configuration
+└── main.ts                    # Application bootstrap & Swagger setup
+```
