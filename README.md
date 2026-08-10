@@ -178,7 +178,7 @@ Swagger provides:
 | `POST` | `/api/books` | Create a new book entry & bind authors | None |
 | `GET` | `/api/books` | Retrieve paginated list of books | `page`, `limit`, `titulo`, `autor` |
 | `GET` | `/api/books/:id` | Retrieve book details by ID | None |
-| `PATCH` | `/api/books/:id` | Update an existing book's details | None |
+| `PUT` | `/api/books/:id` | Update an existing book's details | None |
 | `DELETE` | `/api/books/:id` | Delete a book record | None |
 
 ### ✍️ Authors Module (`/authors`)
@@ -188,7 +188,7 @@ Swagger provides:
 | `POST` | `/api/authors` | Create an individual author record | None |
 | `GET` | `/api/authors` | Retrieve paginated list of authors | `page`, `limit`, `nome` |
 | `GET` | `/api/authors/:id` | Retrieve author details by ID | None |
-| `PATCH` | `/api/authors/:id` | Update an existing author's details | None |
+| `PUT` | `/api/authors/:id` | Update an existing author's details | None |
 | `DELETE` | `/api/authors/:id` | Delete an author record | None |
 
 ---
