@@ -82,4 +82,4 @@ docker-compose up -d --build
 ```
 docker-compose down
 ```
-⚠️ Data Safety Note: Avoid running docker-compose down -v unless you intend to completely erase the persistent database volume and clear all stored records.
+⚠️ Data Safety Note: Avoid running``` docker-compose down -v ```unless you intend to completely erase the persistent database volume and clear all stored records.
