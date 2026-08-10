@@ -158,7 +158,7 @@ npm run start:prod
 # 📚 OpenAPI / Swagger Documentation
 Once the application is running, access the interactive Swagger UI at:
 ```
-http://localhost:3000/api
+http://localhost:3000/api/docs
 ```
 Swagger provides:
 
@@ -175,18 +175,95 @@ Swagger provides:
 
 | Method | Endpoint | Description | Query Parameters |
 | :--- | :--- | :--- | :--- |
-| `POST` | `/books` | Create a new book entry & bind authors | None |
-| `GET` | `/books` | Retrieve paginated list of books | `page`, `limit`, `titulo`, `autor` |
-| `GET` | `/books/:id` | Retrieve book details by ID | None |
-| `PATCH` | `/books/:id` | Update an existing book's details | None |
-| `DELETE` | `/books/:id` | Delete a book record | None |
+| `POST` | `/api/books` | Create a new book entry & bind authors | None |
+| `GET` | `/api/books` | Retrieve paginated list of books | `page`, `limit`, `titulo`, `autor` |
+| `GET` | `/api/books/:id` | Retrieve book details by ID | None |
+| `PATCH` | `/api/books/:id` | Update an existing book's details | None |
+| `DELETE` | `/api/books/:id` | Delete a book record | None |
 
 ### ✍️ Authors Module (`/authors`)
 
 | Method | Endpoint | Description | Query Parameters |
 | :--- | :--- | :--- | :--- |
-| `POST` | `/authors` | Create an individual author record | None |
-| `GET` | `/authors` | Retrieve paginated list of authors | `page`, `limit`, `nome` |
-| `GET` | `/authors/:id` | Retrieve author details by ID | None |
-| `PATCH` | `/authors/:id` | Update an existing author's details | None |
-| `DELETE` | `/authors/:id` | Delete an author record | None |
+| `POST` | `/api/authors` | Create an individual author record | None |
+| `GET` | `/api/authors` | Retrieve paginated list of authors | `page`, `limit`, `nome` |
+| `GET` | `/api/authors/:id` | Retrieve author details by ID | None |
+| `PATCH` | `/api/authors/:id` | Update an existing author's details | None |
+| `DELETE` | `/api/authors/:id` | Delete an author record | None |
+
+---
+# 📄 Payload & Query Examples
+1. Create Author ( ``` POST /authors ``` )
+```
+{
+  "nome": "Rick Riordan",
+  "dataNascimento": "05-06-1964",
+  "biografia": "American author famous for fantasy adventure novels."
+}
+```
+2. Create Book ( ``` POST /books ``` )
+```
+{
+  "titulo": "The Lightning Thief",
+  "descricao": "A fantasy adventure centered around Greek mythology.",
+  "dataPublicacao": "01-07-2005",
+  "authorNames": [
+    "Rick Riordan"
+  ]
+}
+```
+3. Paginated Query with Filters ( ``` GET /books?page=1&limit=2&titulo=Lightning ``` )
+```
+{
+  "data": [
+    {
+      "id": "e3b0c442-98fc-4c14-9510-0a370b377b21",
+      "titulo": "The Lightning Thief",
+      "descricao": "A fantasy adventure centered around Greek mythology.",
+      "dataPublicacao": "2005-07-01",
+      "authors": [
+        {
+          "id": "a1d3f234-89bc-4d88-8111-2c3b4a5d6e7f",
+          "nome": "Rick Riordan"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "totalItems": 1,
+    "itemCount": 1,
+    "itemsPerPage": 2,
+    "totalPages": 1,
+    "currentPage": 1
+  }
+}
+```
+---
+# ✅ Features
+
+### 🚀 Core Architecture & REST API
+- **Modular Architecture:** Well-structured NestJS module design enforcing separation of concerns between controllers, services, entities, and DTOs.
+- **Full CRUD Support:** Complete Create, Read, Update, and Delete operations for both Books and Authors resources.
+- **Strict Mode Enabled:** Enforces strict TypeScript configuration for higher code reliability and type safety.
+
+### 🗄️ Database & Data Persistence
+- **PostgreSQL & TypeORM:** High-performance relational database management with TypeORM integration for seamless object-relational mapping.
+- **Many-to-Many Relational Design:** Handles complex $N:N$ relationships between Books and Authors via an automated junction table (`books_authors_authors`).
+- **Autonomous Entity Binding:** Automatically links existing authors or creates new ones during book creation without requiring manual author ID lookups.
+- **TypeORM Migrations:** Includes manual and automated database migration tracking via `data-source.ts` to guarantee schema integrity.
+- **Persistent Data Storage:** Docker volume mounting ensures database state is fully retained between container restarts.
+
+### 📊 Filtering, Pagination & Date Parsing
+- **Standardized Pagination:** Configurable `page` and `limit` query parameters with structured metadata responses (`totalItems`, `totalPages`, `currentPage`).
+- **Advanced Query Filtering:** Text-based search support for titles and author names directly through endpoint queries.
+- **Localized Date Input Parsing:** Accepts Brazilian date formats (`DD-MM-YYYY`) at the API layer and auto-converts them to standard SQL `DATE` objects (`YYYY-MM-DD`).
+
+### 🛡️ Validation & Error Handling
+- **DTO Payload Sanitization:** Strict input validation powered by `class-validator` and `class-transformer`.
+- **Global Validation Pipe:** Auto-transforms query strings to native numbers/booleans and strips non-whitelisted payload properties.
+- **Custom Exception Filtering:** Standardized HTTP response structures for 400 (Bad Request), 404 (Not Found), and 500 (Internal Error).
+
+### 🐳 DevOps & Developer Experience
+- **Docker & Docker Compose Support:** One-command environment setup (`docker-compose up -d --build`) for running both the API and PostgreSQL in isolated containers.
+- **Interactive Swagger Documentation:** Built-in OpenAPI 3.0 UI (`/api`) providing dynamic schema testing, request examples, and response definitions.
+- **Environment Variable Management:** Centralized configuration via `.env` files and `@nestjs/config`.
