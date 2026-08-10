@@ -53,8 +53,8 @@ src/
 │
 ├── shared/                    # Shared resources and cross-cutting concerns
 │   ├── entities/              # Base and shared TypeORM entities
-│   ├── enums/                 # Application-wide enumerations
-│   └── pagination/            # Global pagination DTOs and interfaces
+│   ├── enums/                 # Application enumerations (Custom error messages & system codes)
+│   └── pagination/            # Global pagination DTOs, interfaces, and meta builders
 │
 ├── app.module.ts              # Root application module
 ├── data-source.ts             # TypeORM Data Source configuration
