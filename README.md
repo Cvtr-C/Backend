@@ -103,6 +103,7 @@ npm install
 docker-compose up -d --build
 ```
 The API will be operational at: http://localhost:3000
+
 4. Stop Containers Safely
 - To stop active containers while keeping database records saved in the persistent volume:
 ```
