@@ -62,23 +62,24 @@ PORT=3000
 Follow these step-by-step instructions to get the application up and running locally.
 
 1. Clone the Repository
-Clone the project repository to your local machine:
+-Clone the project repository to your local machine:
 ```
 git clone <REPOSITORY_URL>
 cd <REPOSITORY_FOLDER>
 ```
 2. Install Project Dependencies
-Install all local Node.js packages and development dependencies defined in package.json:
+-Install all local Node.js packages and development dependencies defined in package.json:
 ```
 npm install
 ```
 3. Build and Start Application via Docker
-Build the container images and launch both the NestJS API and PostgreSQL database services in detached background mode:
+-Build the container images and launch both the NestJS API and PostgreSQL database services in detached background mode:
 ```
 docker-compose up -d --build
 ```
 4. Stopping the Application
-To safely stop and remove the active containers while preserving all stored PostgreSQL data inside the persistent volume:
+-To safely stop and remove the active containers while preserving all stored PostgreSQL data inside the persistent volume:
 ```
 docker-compose down
 ```
+⚠️ Data Safety Note: Avoid running docker-compose down -v unless you intend to completely erase the persistent database volume and clear all stored records.
