@@ -77,15 +77,15 @@ Before running this project, ensure you have the following installed locally:
 # 🔐 Environment Variables
 Create a ``` .env ``` file in the project root directory based on the following template:
 ```
-# Application Port
-PORT=3000
-
 # PostgreSQL Configuration
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=postgres
 POSTGRES_DB=postgres_db
 POSTGRES_HOST=postgres
 POSTGRES_PORT=5432
+
+
+# Application Port
 PORT=3000
 ```
 ---
@@ -193,7 +193,7 @@ Swagger provides:
 
 ---
 # 📄 Payload & Query Examples
-1. Create Author ( ``` POST /authors ``` )
+1. Create Author ( ``` POST /api/authors ``` )
 ```
 {
   "nome": "Rick Riordan",
@@ -201,7 +201,7 @@ Swagger provides:
   "biografia": "American author famous for fantasy adventure novels."
 }
 ```
-2. Create Book ( ``` POST /books ``` )
+2. Create Book ( ``` POST /api/books ``` )
 ```
 {
   "titulo": "The Lightning Thief",
@@ -212,7 +212,7 @@ Swagger provides:
   ]
 }
 ```
-3. Paginated Query with Filters ( ``` GET /books?page=1&limit=2&titulo=Lightning ``` )
+3. Paginated Query with Filters ( ``` GET /api/books?page=1&limit=2&titulo=Lightning ``` )
 ```
 {
   "data": [
@@ -265,7 +265,7 @@ Swagger provides:
 
 ### 🐳 DevOps & Developer Experience
 - **Docker & Docker Compose Support:** One-command environment setup (`docker-compose up -d --build`) for running both the API and PostgreSQL in isolated containers.
-- **Interactive Swagger Documentation:** Built-in OpenAPI 3.0 UI (`/api`) providing dynamic schema testing, request examples, and response definitions.
+- **Interactive Swagger Documentation:** Built-in OpenAPI 3.0 UI (`/api/docs`) providing dynamic schema testing, request examples, and response definitions.
 - **Environment Variable Management:** Centralized configuration via `.env` files and `@nestjs/config`.
 ---
 # 🧪 Running Tests
